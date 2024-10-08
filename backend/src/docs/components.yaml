@@ -1,0 +1,93 @@
+components:
+  schemas:
+
+    CustomerRegistration:
+      type: object
+      required: [username, email, password]
+      properties:
+        uid:
+          type: integer
+          readOnly: true
+        username: 
+          type: string
+          description: The user's username
+        email:
+          type: string
+          format: email
+          description: The user's email
+        password:
+          type: string
+          description: The user's password
+
+    CustomerCredentials:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          description: The user's email address.
+        password:
+          type: string
+          description: The user's password.
+
+    UserUpdateInfo:
+      type: object
+      properties:
+        username:
+          type: string
+          description: The user's new username (optional).
+        email:
+          type: string
+          format: email
+          description: The user's new email address (optional).
+          
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          description: The unique identifier for the order
+        orderDate:
+          type: string
+          format: date-time
+          description: The date when the order was placed
+        totalAmount:
+          type: number
+          format: float
+          description: The total amount for the order
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The product's unique identifier
+        name:
+          type: string
+          description: The name of the product
+        description:
+          type: string
+          description: A detailed description of the product
+        price:
+          type: number
+          format: float
+          description: The price of the product
+        category:
+          type: string
+          description: The category the product belongs to
+
+    ProductList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Product'
+
+    ProductSearch:
+      type: object
+      properties:
+        query:
+          type: string
+          description: The search query used to filter products
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'

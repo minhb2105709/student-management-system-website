@@ -8,6 +8,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+setup.txt
+package-lock.json
+package.json
 .DS_Store
 *.local
 
